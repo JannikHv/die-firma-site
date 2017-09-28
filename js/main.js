@@ -1,5 +1,6 @@
 /* Globals */
 var last_target = $('#about-page');
+var last_button = $('header nav ul li #current-page');
 
 $(document).ready(function() {
     $('.main-view').fadeIn(2000);
@@ -8,7 +9,7 @@ $(document).ready(function() {
 
     /* Check if window is too small to show sidebars */
     if ($(window).width() > 1320)
-        $('.main-view .sbar').hide().delay(750).fadeIn(1750);
+        $('.main-view .sbar').hide().delay(750).fadeIn(2000);
 
     $(window).on('resize', function() {
         if ($(this).width() <= 1320)
@@ -19,14 +20,17 @@ $(document).ready(function() {
 
     $('header #logo img').on('click', function(event) {
         location.reload();
-    })
+    });
 
     $('a').on('click', function(event) {
         var target = $(this.getAttribute('href'));
 
         if (!target.is(last_target)) {
+            $(this).attr('id', 'current-page');
             last_target.hide();
-            target.fadeIn(1000);
+            target.fadeIn(1250);
+            last_button.attr('id', '');
+            last_button = $(this);
         }
         event.preventDefault();
         $('html, body').stop().animate({
