@@ -39,4 +39,8 @@ $(document).ready(function() {
 
         last_target = target;
     });
+
+    $('#rights').click(function(){
+        $('#logo').find('img').toggleClass('incomming').toggleClass('outgoing');
+    });
 });
